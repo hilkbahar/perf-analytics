@@ -1,0 +1,16 @@
+{
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "extends": "react-app",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "semi": ["error", "always"],
+    "react/jsx-indent": [2, 2, { "indentLogicalExpressions": true }]
+  }
+}
