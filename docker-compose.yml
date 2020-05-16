@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  api:
+    build: './perf-analytics-api'
+    ports:
+    - "3002:3002"
+  js:
+    build: './perf-analytics-js'
+    ports:
+    - "3001:3001"
+  dashboard:
+    build: './perf-analytics-dashboard'
+    ports:
+    - "3000:3000"

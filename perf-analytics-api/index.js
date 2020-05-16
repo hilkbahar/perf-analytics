@@ -3,7 +3,7 @@ const fastify = require('fastify')({ logger: true });
 
 const config = {
   server: {
-    host: process.env.HOST || '127.0.0.1',
+    host: process.env.HOST || '0.0.0.0',
     port: process.env.PORT || 3002
   }
 };
