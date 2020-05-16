@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import GoogleChart from "react-google-charts";
 
 const Chart = (props) => {
@@ -9,7 +10,8 @@ const Chart = (props) => {
   useEffect(() => {
     const { data, hTitle, vTitle } = props;
     const chartData = data.map(item => {
-      return [new Date(item.date), item.value];
+      const date = new Date(item.date);
+      return [[date.getHours(), date.getMinutes(), date.getSeconds()], item.value];
     });
     setData([[hTitle, vTitle], ...chartData]);
   }, [props.data]);
@@ -18,10 +20,10 @@ const Chart = (props) => {
 
   return (
     <GoogleChart
-      width={'600px'}
+      width={'100%'}
       height={'400px'}
       chartType="LineChart"
-      loader={<div>Loading Chart</div>}
+      loader={<div>Loading Charts of {title}</div>}
       data={data}
       options={{
         title,
@@ -35,6 +37,18 @@ const Chart = (props) => {
       rootProps={{ 'data-testid': '1' }}
     />
   );
+};
+
+Chart.propTypes = {
+  title: PropTypes.string.isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      date: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired
+    })
+  ).isRequired,
+  hTitle: PropTypes.string,
+  vTitle: PropTypes.string
 };
 
 export default Chart;
