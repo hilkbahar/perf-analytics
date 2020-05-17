@@ -10,11 +10,11 @@ const config = {
     path: path.resolve(__dirname, 'dist')
   },
   devServer: {
-    host: '0.0.0.0',
+    host: process.env.HOST || '127.0.0.1',
     liveReload: true,
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
-    port: 3000,
+    port: process.env.PORT || 3001,
     open: true,
     disableHostCheck: true
   },
