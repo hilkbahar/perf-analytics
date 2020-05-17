@@ -13,10 +13,13 @@ const Chart = (props) => {
       const date = new Date(item.date);
       return [[date.getHours(), date.getMinutes(), date.getSeconds()], item.value];
     });
-    setData([[hTitle, vTitle], ...chartData]);
+    if (chartData.length) {
+      setData([[hTitle, vTitle], ...chartData]);
+    }
   }, [props.data]);
 
   const { title, hTitle, vTitle } = props;
+
 
   return (
     <GoogleChart
