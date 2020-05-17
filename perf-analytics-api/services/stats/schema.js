@@ -5,7 +5,11 @@ const queryBodyJsonSchema = {
     start_date: { type: 'string' },
     end_date: { type: 'string' },
     limit: { type: 'number' },
-    host: { type: 'string' }
+    host: { type: 'string' },
+    metric: {
+      type: 'string',
+      enum: ['ttfb', 'fcp', 'dom_load', 'window_load']
+    }
   }
 };
 

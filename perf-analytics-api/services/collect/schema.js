@@ -5,7 +5,7 @@ const bodyJsonSchema = {
     host: { type: 'string' },
     metric: {
       type: 'string',
-      enum: ['ttfp', 'fcp', 'dom_load', 'window_load']
+      enum: ['ttfb', 'fcp', 'dom_load', 'window_load']
     },
     value: { type: 'number' }
   }

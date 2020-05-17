@@ -1,6 +1,7 @@
 const fastify = require('fastify')({ logger: true });
 const config = require('./config');
 
+fastify.register(require('fastify-cors'), { origin: '*' });
 fastify.decorate('notFound', (request, reply) => {
   reply.code(404).send({ status: 404, error: 'errors.notFound', message: 'Not Found' });
 });

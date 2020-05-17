@@ -5,6 +5,6 @@ module.exports = {
   },
   mongo: {
     dbName: 'perfAnalytics',
-    dbUrl: 'mongodb://localhost:27017'
+    dbUrl: `mongodb://${process.env.DB_HOST || 'localhost'}:27017`
   }
 };

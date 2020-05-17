@@ -22,10 +22,11 @@ async function routes (fastify, options, next) {
 
   fastify.post('/stats/_query', query, async (request, reply) => {
     const { body } = request;
-    const { host, start_date: sDate, end_date: eDate } = body;
+    const { host, start_date: sDate, end_date: eDate, metric } = body;
     let limit = Number(request.query.limit);
     const query = {
       host,
+      ...!!metric && { metric },
       ...(sDate || eDate) && {
         created_at: {
           ...!!sDate && {
@@ -37,7 +38,7 @@ async function routes (fastify, options, next) {
         }
       }
     };
-    if (limit === null || limit > 10) {
+    if (!limit || limit > 10) {
       limit = 10;
     }
     try {
